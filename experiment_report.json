@@ -1,0 +1,91 @@
+{
+  "project": "RenewCast",
+  "dataset": "NREL ARPA-E PERFORM actual-generation HDF5 files",
+  "dataset_documentation": "https://github.com/PERFORM-Forecasts/documentation",
+  "forecast_horizon_steps": 1,
+  "lookback_steps": 12,
+  "split": {
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15,
+    "method": "chronological"
+  },
+  "feature_scope": "past generation lags, rolling summaries, calendar variables; no weather variables in this baseline notebook",
+  "technologies_run": [
+    "Solar",
+    "Wind"
+  ],
+  "results": [
+    {
+      "technology": "Solar",
+      "model": "Persistence",
+      "MAE": 208.26401075905372,
+      "RMSE": 459.99410287170684,
+      "nMAE_percent": 0.514415178219344,
+      "error_reduction_vs_persistence_percent": 0.0
+    },
+    {
+      "technology": "Solar",
+      "model": "GradientBoosting",
+      "MAE": 123.34451141102784,
+      "RMSE": 273.57527142690384,
+      "nMAE_percent": 0.30466276236891054,
+      "error_reduction_vs_persistence_percent": 40.77492747715857
+    },
+    {
+      "technology": "Wind",
+      "model": "Persistence",
+      "MAE": 126.34885532528942,
+      "RMSE": 176.4576438114309,
+      "nMAE_percent": 0.27404888033190306,
+      "error_reduction_vs_persistence_percent": 0.0
+    },
+    {
+      "technology": "Wind",
+      "model": "GradientBoosting",
+      "MAE": 110.53745297350501,
+      "RMSE": 167.75971198096906,
+      "nMAE_percent": 0.239754172241133,
+      "error_reduction_vs_persistence_percent": 12.514084366714219
+    },
+    {
+      "technology": "Solar",
+      "model": "Persistence",
+      "MAE": 208.25938415527344,
+      "RMSE": 459.9937329736135,
+      "nMAE_percent": 0.5144037297197084,
+      "error_reduction_vs_persistence_percent": 0.0022215090180096194
+    },
+    {
+      "technology": "Solar",
+      "model": "LSTM",
+      "MAE": 112.11094665527344,
+      "RMSE": 261.30087722298214,
+      "nMAE_percent": 0.2769156805864857,
+      "error_reduction_vs_persistence_percent": 46.168833373242954
+    },
+    {
+      "technology": "Wind",
+      "model": "Persistence",
+      "MAE": 126.32344818115234,
+      "RMSE": 176.42802954569038,
+      "nMAE_percent": 0.273993772590602,
+      "error_reduction_vs_persistence_percent": 0.020108725220869903
+    },
+    {
+      "technology": "Wind",
+      "model": "LSTM",
+      "MAE": 60.14971923828125,
+      "RMSE": 98.91291940388778,
+      "nMAE_percent": 0.1304638903675931,
+      "error_reduction_vs_persistence_percent": 52.39393417263357
+    }
+  ],
+  "limitations": [
+    "This notebook forecasts generation from historical generation and calendar features; it is not yet a weather-aware model.",
+    "PERFORM generation profiles are simulated/modelled in part from meteorological inputs, not necessarily direct meter readings.",
+    "One selected site/column may not represent an entire region or grid.",
+    "No operational grid deployment is performed.",
+    "Results apply to the selected dataset, site/column, time period, horizon, and split."
+  ]
+}
